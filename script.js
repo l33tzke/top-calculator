@@ -2,6 +2,11 @@ let currentOperand1 = '';
 let currentOperand2 = '';
 let currentOperator = '';
 
+function updateDisplay() {
+    const displayField = document.querySelector('#display');
+    displayField.value = `${currentOperand1} ${currentOperator} ${currentOperand2}`;
+}
+
 function addToOperand(input) {
     //If the operator is empty, we're still adding digits to the first operand,
     //otherwise we're adding to the second
@@ -10,26 +15,28 @@ function addToOperand(input) {
     } else {
         currentOperand2 = currentOperand2 + input;
     }
+    updateDisplay()
 } 
 
 function setOperator(operator) {
     currentOperator = operator;
+    updateDisplay();
 }
 
-function add(a,b) {
-    return a+b;
+function add(a, b) {
+    return a + b;
 }
 
-function subtract(a,b) {
-    return a-b;
+function subtract(a, b) {
+    return a - b;
 }
 
-function multiply(a,b){
-    return a*b;
+function multiply(a, b){
+    return a * b;
 }
 
-function divide(a,b) {
-    return a/b
+function divide(a, b) {
+    return a / b;
 }
 
 function operate(a, b, operator){
@@ -48,12 +55,19 @@ function operate(a, b, operator){
 }
 
 function calculateResult() {
-    console.log("calculateResult called!");
-    op1 = Number(currentOperand1);
-    op2 = Number(currentOperand2)
-    console.log(operate(op1, op2, currentOperator));
+    if (currentOperator == '/' && currentOperand2 == '0') {
+        alert('Generating black hole, please wait...');
+        currentOperand1 = '';
+    } else {
+        operand1 = Number(currentOperand1);
+        operand2 = Number(currentOperand2);
+        currentOperand1 = operate(operand1, operand2, currentOperator);
+    }
+    currentOperand2 = '';
+    currentOperator = '';
+    updateDisplay();
+    
 }
-
     
 function setup() {
     let operandButtons = Array.from(document.querySelectorAll('.operand'));
