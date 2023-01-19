@@ -19,10 +19,16 @@ function addToOperand(input) {
 } 
 
 function setOperator(operator) {
-    if (currentOperator != '' && currentOperand2 != '') {
+    const unaryOperators = ["1/x", "x²", "√x"];
+    if (unaryOperators.includes(operator)) {
+        //Calculates directly if the operator is a unary operator.
+        currentOperator = operator;
         calculateResult();
+    } else if (currentOperator != '' && currentOperand2 != '') {
+        calculateResult();
+    } else {
+        currentOperator = operator;
     }
-    currentOperator = operator;
     updateDisplay();
 }
 
@@ -42,6 +48,18 @@ function divide(a, b) {
     return a / b;
 }
 
+function invert(a) {
+    return 1/a;
+}
+
+function square(a) {
+    return a*a;
+}
+
+function squareRoot(a) {
+    return Math.sqrt(a);
+}
+
 function operate(a, b, operator){
     switch (operator) {
         case '+':
@@ -52,6 +70,12 @@ function operate(a, b, operator){
             return multiply(a,b);
         case '/':
             return divide(a,b);
+        case "1/x":
+            return invert(a);
+        case "x²":
+            return square(a);
+        case "√x":
+            return squareRoot(a);
         default:
             return 'Error!'
     }
