@@ -19,6 +19,9 @@ function addToOperand(input) {
 } 
 
 function setOperator(operator) {
+    if (currentOperator != '' && currentOperand2 != '') {
+        calculateResult();
+    }
     currentOperator = operator;
     updateDisplay();
 }
