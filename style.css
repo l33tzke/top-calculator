@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
+
 html {
     box-sizing: border-box;
     font-size: 16px;
@@ -31,23 +33,51 @@ img {
 }
 
 main {
-    width: 300px;
     margin-top: 200px;
 }
 
-#display {
-    width: 300px;
-    height: 40px;
-    font-size: larger;
+.calculator {
+    /* width: 300px; */
+    border: 1px solid #000;
+    border-radius: 5%;
+    padding: 10px;
+    background-color: #eeeeee;
+}
+
+.display-area {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    height: 6rem;
+    background-color: white;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    padding: 0.2rem;
+}
+
+.display-history {
+    height: 2rem;
+    font-size: 1.5rem;
+}
+
+.display {
+    height: 3rem;
+    font-size: 2rem;
     text-align: right;
 }
 
-.top-row {
+.keypad {
     display: flex;
     justify-content: space-evenly;
+    flex-direction: column;
 }
 
-.panel {
+.function-keys {
+    display: flex;
+    justify-content: space-between;
+}
+
+.keyboard {
     width: 300px;
     display: flex;
     justify-content: space-between;
@@ -68,6 +98,10 @@ button {
 
 .operator {
     background-color: lightblue;
+}
+
+.invisible {
+    background-color: inherit;
 }
 
 .result {
